@@ -18,6 +18,7 @@ public class Button : MonoBehaviour {
 
     public void SetDice()
     {
+        GameController.instance.isTap = false;
         /*
         //currentDice = null;
         //currentDice.SetActive(false);
@@ -34,15 +35,16 @@ public class Button : MonoBehaviour {
         {
             GameController.instance.allDice[i].SetActive(false);
         }
-        GameController.instance.allDice[myDice].GetComponent<Rigidbody>().useGravity = false;
+        GameController.instance.allDicesRb[myDice].useGravity = false;
         GameController.instance.allDice[myDice].SetActive(true);
         float a = Random.Range(0, 360);
         float b = Random.Range(0, 360);
         float c = Random.Range(0, 360);
-        GameController.instance.allDice[myDice].transform.rotation = Quaternion.Euler(a, b, c);
-        GameController.instance.allDice[myDice].transform.position = currentDice.position;
-        GameController.instance.allDice[myDice].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-
+        GameController.instance.allDicesTransform[myDice].rotation = Quaternion.Euler(a, b, c);
+        GameController.instance.allDicesTransform[myDice].position = currentDice.position;
+        GameController.instance.allDicesRb[myDice].constraints = RigidbodyConstraints.FreezeAll;
+        GameController.instance.dicesButton.PlayReverse();
+        GameController.instance.dicesMenu.PlayReverse();
 
     }
 
